@@ -2,45 +2,45 @@
 This repository contains all code, scripts, and documentation for our pipeline to classify ADHD vs. control EEG and identify relevant neurophysiological biomarkers using a rigorously validated deep learning workflow.
 
 # Quick-Start
--Python 3.8+
+- Python 3.8+
 
--PyTorch
+- PyTorch
 
--NumPy
+- NumPy
 
--scikit-learn
+- scikit-learn
 
--mne
+- mne
 
--matplotlib
+- matplotlib
 
--geneticalgorithm, pyswarm, seaborn
+- geneticalgorithm, pyswarm, seaborn
 
 #Setting up
 
--use the command below to install the dependencies
+- use the command below to install the dependencies
   ```pip install torch numpy scikit-learn mne matplotlib seaborn geneticalgorithm pyswarm```
 
--The EEG dataset used in this project is publicly available at:
+- The EEG dataset used in this project is publicly available at:
   [IEEE DataPort: EEG data from ADHD and control children](https://ieee-dataport.org/open-access/eeg-data-adhd-control-children)
   Due to licensing and ethical restrictions, preprocessed files are not shared here.
   Please download the raw dataset from the above link and follow the provided preprocessing steps to generate the required format.
-  -1. Loaded raw EEG files (.mat format) using MNE.
-  -2. Applied a 1–45 Hz bandpass FIR filter.
-  -3. Re-referenced to the average of all channels.
-  -4. Independent component analysis(ICA) of signals.
-  -5. Segmented data into 2-second non-overlapping epochs.
-  -6. Removed epochs with peak-to-peak amplitude > 150 µV (artifact rejection).
-  -7. Normalized each epoch (z-score per channel).
-  -8. Saved the resulting data in `.set` format using EEGLAB.
+  - 1. Loaded raw EEG files (.mat format) using MNE.
+  - 2. Applied a 1–45 Hz bandpass FIR filter.
+  - 3. Re-referenced to the average of all channels.
+  - 4. Independent component analysis(ICA) of signals.
+  - 5. Segmented data into 2-second non-overlapping epochs.
+  - 6. Removed epochs with peak-to-peak amplitude > 150 µV (artifact rejection).
+  - 7. Normalized each epoch (z-score per channel).
+  - 8. Saved the resulting data in `.set` format using EEGLAB.
 
--Train the supervised 1D autoencoder and save model weights.
+- Train the supervised 1D autoencoder and save model weights.
   ```python 1D_autoencoder.py```
 
--Feature selection and classification
+- Feature selection and classification
   ```python classification_pipeline.py```
 
--Biomarker identification
+- Biomarker identification
   ```python biomarker_identification.py```
   ```python single_channel_importance.py```
 
